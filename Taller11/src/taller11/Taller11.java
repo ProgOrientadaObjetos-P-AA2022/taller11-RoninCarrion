@@ -20,7 +20,7 @@ public class Taller11 {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner a = new Scanner(System.in);
-        ArrayList<Cuenta> cuenta = new ArrayList<>();
+        ArrayList<Menu> menu = new ArrayList<>();
         String nombrePlato;
         boolean stop = true;
         // Variables Reutilizables
@@ -30,11 +30,8 @@ public class Taller11 {
         double porcentajeAdicional;
 
         System.out.println(" << BIENVENIDOS/AS A RESTAURANT TODO SATISFECHO >>");
-
         System.out.println("Ingrese el nombre del cliente: ");
         String nombre = a.nextLine();
-
-        String option = a.nextLine();
         while (stop) {
             System.out.println("Tenemos los siguientes menús, ingrese el"
                     + " número correspondiente\n"
@@ -44,6 +41,7 @@ public class Taller11 {
                     + "[3] Menu Económico\n"
                     + "[4] Menu Niños\n"
                     + "[5] No Registrar más datos");
+            String option = a.nextLine();
             switch (option) {
                 case "1":
                     System.out.println("<< MENU CARTA >>");
@@ -63,9 +61,9 @@ public class Taller11 {
 
                     MenuCarta menuCarta = new MenuCarta(nombrePlato, valorMenu,
                             valorInicial, valorGuarnicion, valorBebida,
-                            porcentajeAdicional, nombre);
+                            porcentajeAdicional);
 
-                    cuenta.add(menuCarta);
+                    menu.add(menuCarta);
                     break;
 
                 case "2":
@@ -82,9 +80,9 @@ public class Taller11 {
                     valorBebida = a.nextDouble();
 
                     MenuDia menuDia = new MenuDia(nombrePlato, valorMenu,
-                            valorInicial, valorPostre, valorBebida, nombre);
+                            valorInicial, valorPostre, valorBebida);
 
-                    cuenta.add(menuDia);
+                    menu.add(menuDia);
                     break;
 
                 case "3":
@@ -101,9 +99,9 @@ public class Taller11 {
 
                     MenuEconomico menuEconomico = new MenuEconomico(nombrePlato,
                             valorMenu,
-                            valorInicial, porcentajeAdicional, nombre);
+                            valorInicial, porcentajeAdicional);
 
-                    cuenta.add(menuEconomico);
+                    menu.add(menuEconomico);
                     break;
 
                 case "4":
@@ -120,22 +118,26 @@ public class Taller11 {
                     double porcionPastel = a.nextDouble();
 
                     MenuNiños menuNiños = new MenuNiños(nombrePlato, valorMenu,
-                            valorInicial, porcionHelado, porcionPastel, nombre);
+                            valorInicial, porcionHelado, porcionPastel);
 
-                    cuenta.add(menuNiños);
+                    menu.add(menuNiños);
                     break;
                 case "5":
                     stop = false;
                     break;
-                
+
                 default:
                     System.out.println("Ingrese un valor correcto por favor...");
             }
 
         }
-        for (int i = 0; i < cuenta.size(); i++) {
-            cuenta.get(i).establecerValorCancelar();
+        for (int i = 0; i < menu.size(); i++) {
+            menu.get(i).establecerValorCancelar();
         }
+        Cuenta cuenta = new Cuenta(menu, nombre);
+        cuenta.establecerSubtotal();
+        cuenta.establecerTotalPagar();
+        System.out.println(cuenta);
 
     }
 

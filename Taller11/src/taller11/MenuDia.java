@@ -8,22 +8,18 @@ package taller11;
  *
  * @author ronni
  */
-public class MenuDia extends Cuenta {
-    private String nombrePlato;
-    private double valorMenu; 
-    private double valorInicialMenu; 
-    private double valorPostre; 
-    private double valorBebida; 
+public class MenuDia extends Menu {
 
-    public MenuDia(String a, double b, double c, double d, double e, String nombre) {
-        super(nombre);
-        nombrePlato = a;
-        valorMenu = b;
-        valorInicialMenu = c;
+    private double valorPostre;
+    private double valorBebida;
+
+    public MenuDia(String a, double b, double c, double d, double e) {
+        super(a, b, c);
         valorPostre = d;
         valorBebida = e;
     }
 
+    @Override
     public void establecerNombrePlato(String a) {
         nombrePlato = a;
     }
@@ -33,7 +29,7 @@ public class MenuDia extends Cuenta {
     }
 
     public void establecerValorInicialMenu(double a) {
-        valorInicialMenu = a;
+        valorInicial = a;
     }
 
     public void establecerValorPostre(double a) {
@@ -43,23 +39,25 @@ public class MenuDia extends Cuenta {
     public void establecerValorBebida(double a) {
         valorBebida = a;
     }
-    
+
     @Override
     public void establecerValorCancelar() {
-        valorCancelar =  valorMenu + valorInicialMenu 
+        valorCancelar = valorMenu + valorInicial
                 + valorPostre + valorBebida;
     }
 
+    @Override
     public String obtenerNombrePlato() {
         return nombrePlato;
     }
 
+    @Override
     public double obtenerValorMenu() {
         return valorMenu;
     }
 
     public double obtenerValorInicialMenu() {
-        return valorInicialMenu;
+        return valorInicial;
     }
 
     public double obtenerValorPostre() {
@@ -69,7 +67,13 @@ public class MenuDia extends Cuenta {
     public double obtenerValorBebida() {
         return valorBebida;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        String cadena = String.format("\t<< Menú del Día >>\n%s\n"
+                + "    > Valor de la Bebida: %.2f\n", super.toString(),
+                valorBebida);
+        return cadena;
+    }
+
 }

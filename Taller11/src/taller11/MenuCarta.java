@@ -8,36 +8,18 @@ package taller11;
  *
  * @author ronni
  */
-public class MenuCarta extends Cuenta{
-    private String nombrePlato; 
-    private double valorMenu; 
-    private double valorInicial; 
-    private double valorPorcion; 
-    private double valorBebida; 
-    private double porcentajeServicio; 
+public class MenuCarta extends Menu {
+
+    private double valorPorcion;
+    private double valorBebida;
+    private double porcentajeServicio;
 
     public MenuCarta(String a, double b, double c, double d, double e, double f
-            , String nombre) {
-        super(nombre);
-        nombrePlato = a;
-        valorMenu = b;
-        valorInicial = c;
+    ) {
+        super(a, b, c);
         valorPorcion = d;
         valorBebida = e;
         porcentajeServicio = f;
-    }
-
-    public void establecerNombrePlato(String a) {
-        nombrePlato = a;
-        
-    }
-
-    public void establecerValorMenu(double a) {
-        valorMenu = a;
-    }
-
-    public void establecerValorInicial(double a) {
-        valorInicial = a;
     }
 
     public void establecerValorPorcion(double a) {
@@ -51,20 +33,24 @@ public class MenuCarta extends Cuenta{
     public void establecerPorcentajeServicio(double a) {
         porcentajeServicio = a;
     }
+
     @Override
-    public void establecerValorCancelar(){
-        valorCancelar = valorMenu + valorInicial + valorPorcion + 
-                valorBebida + porcentajeServicio;
+    public void establecerValorCancelar() {
+        valorCancelar = valorMenu + valorInicial + valorPorcion
+                + valorBebida + porcentajeServicio;
     }
 
+    @Override
     public String obtenerNombrePlato() {
         return nombrePlato;
     }
 
+    @Override
     public double obtenerValorMenu() {
         return valorMenu;
     }
 
+    @Override
     public double obtenerValorInicial() {
         return valorInicial;
     }
@@ -80,7 +66,17 @@ public class MenuCarta extends Cuenta{
     public double obtenerPorcentajeServicio() {
         return porcentajeServicio;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        String cadena = String.format("\t<< Menú Carta >>\n%s\n"
+                + "    Valor de la Porción de Guarnición: %.2f\n"
+                + "    Valor de la Bebida: %.2f\n"
+                + "    Porcentaje de Servicio: %.2f\n", super.toString(),
+                valorPorcion,
+                valorBebida,
+                porcentajeServicio);
+        return cadena;
+    }
+
 }

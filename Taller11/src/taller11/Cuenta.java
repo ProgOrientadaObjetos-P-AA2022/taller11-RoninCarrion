@@ -10,40 +10,48 @@ import java.util.ArrayList;
  *
  * @author ronni
  */
-public abstract class Cuenta {
-    protected String nombreCliente; 
-    // protected double cuentaPagar;
-    protected double valorCancelar;
-    protected double iva; 
-    protected double subtotal;
-    protected ArrayList<Cuenta> c = new ArrayList<>(); 
+public class Cuenta {
 
-    public Cuenta(String a) {
-        nombreCliente = a;
+    private ArrayList<Menu> menu;
+    private double totalPagar;
+    private double iva;
+    private double subtotal;
+    private String nombreCliente;
+
+    public Cuenta(ArrayList<Menu> a, String b) {
+        menu = a;
+        nombreCliente = b;
         iva = 0.12;
-      
     }
 
     public void establecerNombreCliente(String a) {
         nombreCliente = a;
     }
 
-    public abstract void  establecerValorCancelar();
+    public void establecerMenu(ArrayList<Menu> a) {
+        menu = a;
+    }
+
+    public void establecerTotalPagar() {
+        totalPagar = (subtotal * iva) + subtotal;
+    }
 
     public void establecerIva(double a) {
         iva = a;
     }
 
     public void establecerSubtotal() {
-        subtotal = iva;
+        for (int i = 0; i < menu.size(); i++) {
+            subtotal += menu.get(i).valorCancelar;
+        }
     }
 
-    public String obtenerNombreCliente() {
-        return nombreCliente;
+    public ArrayList<Menu> obtenerMenu() {
+        return menu;
     }
 
-    public double obtenerValorCancelar() {
-        return valorCancelar;
+    public double obtenerTotalPagar() {
+        return totalPagar;
     }
 
     public double obtenerIva() {
@@ -54,28 +62,27 @@ public abstract class Cuenta {
         return subtotal;
     }
 
+    public String obtenerNombreCliente() {
+        return nombreCliente;
+    }
+
     @Override
     public String toString() {
         String cadena = String.format("\t<< RESTAURANT TODO SATISFECHO >>\n"
-        + "CUENTA POR PAGAR"
-                + ">Nombre del Cliente: %s\n");
-        
-        for (int i = 0; i < c.size(); i++) {
-            cadena = String.format("%s\n%s\n", cadena, c.get(i));
-            
+                + ">> CUENTA POR PAGAR\n"
+                + "    > Nombre del Cliente: %s\n", nombreCliente);
+
+        for (int i = 0; i < menu.size(); i++) {
+            cadena = String.format("%s\n%s", cadena, menu.get(i));
+
         }
-        cadena = String.format("%s\nValor Subtotal: %.2f\n"
-                + "> Iva: %.2f %\n"
+        cadena = String.format("%s\n==========================================\n"
+                + "> Valor Subtotal: %.2f\n"
+                + "> Iva: %.2f \n"
                 + "> Valor Total a Cancelar: %.2f", cadena,
                 subtotal,
                 iva,
-                valorCancelar);
+                totalPagar);
         return cadena;
     }
-    
-    
-    
-    
-  
-    
 }

@@ -8,21 +8,16 @@ package taller11;
  *
  * @author ronni
  */
-public class MenuEconomico extends Cuenta {
+public class MenuEconomico extends Menu {
 
-    private String nombrePlato;
-    private double valorMenu;
-    private double valorInicialMenu;
     private double porcentajeDescuento;
 
-    public MenuEconomico(String a, double b, double c, double d, String nombre) {
-        super(nombre);
-        nombrePlato = a;
-        valorMenu = b;
-        valorInicialMenu = c;
+    public MenuEconomico(String a, double b, double c, double d) {
+        super(a, b, c);
         porcentajeDescuento = d;
     }
 
+    @Override
     public void establecerNombrePlato(String a) {
         nombrePlato = a;
     }
@@ -31,36 +26,50 @@ public class MenuEconomico extends Cuenta {
         valorMenu = a;
     }
 
-    public void establecerValorInicialMenu(double a) {
-        valorInicialMenu = a;
+    @Override
+    public void establecerValorInicial(double a) {
+        valorInicial = a;
     }
 
     public void establecerPorcentajeDescuento(double a) {
         porcentajeDescuento = a;
     }
-    
 
     @Override
     public void establecerValorCancelar() {
-        valorCancelar = valorMenu + valorInicialMenu + porcentajeDescuento;
+        valorCancelar = valorMenu + valorInicial + porcentajeDescuento;
 
     }
 
+    @Override
     public String obtenerNombrePlato() {
         return nombrePlato;
     }
 
+    @Override
     public double obtenerValorMenu() {
         return valorMenu;
     }
 
-    public double obtenerValorInicialMenu() {
-        return valorInicialMenu;
+    /**
+     *
+     * @return
+     */
+    @Override
+    public double obtenerValorInicial() {
+        return valorInicial;
     }
 
     public double obtenerPorcentajeDescuento() {
         return porcentajeDescuento;
     }
-    
+
+    @Override
+    public String toString() {
+        String cadena = String.format("\t<< Menú Económico >>\n%s\n"
+                + "    > Porcentaje de descuento: %.2f\n", super.toString(),
+                porcentajeDescuento);
+        return cadena;
+    }
 
 }
