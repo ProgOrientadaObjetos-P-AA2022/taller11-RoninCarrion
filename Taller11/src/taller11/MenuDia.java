@@ -13,8 +13,8 @@ public class MenuDia extends Menu {
     private double valorPostre;
     private double valorBebida;
 
-    public MenuDia(String a, double b, double c, double d, double e) {
-        super(a, b, c);
+    public MenuDia(String a, double b, double d, double e) {
+        super(a, b);
         valorPostre = d;
         valorBebida = e;
     }
@@ -46,15 +46,6 @@ public class MenuDia extends Menu {
                 + valorPostre + valorBebida;
     }
 
-    @Override
-    public String obtenerNombrePlato() {
-        return nombrePlato;
-    }
-
-    @Override
-    public double obtenerValorMenu() {
-        return valorMenu;
-    }
 
     public double obtenerValorInicialMenu() {
         return valorInicial;

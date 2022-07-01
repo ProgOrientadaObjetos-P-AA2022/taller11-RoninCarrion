@@ -10,29 +10,17 @@ package taller11;
  */
 public class MenuNiños extends Menu {
 
-    private double valorInicial;
     private double valorHelado;
     private double valorPastel;
 
-    public MenuNiños(String a, double b, double c, double d,
-            double e) {
-        super(a, b, c);
-        valorHelado = d;
-        valorPastel = e;
-    }
-
-    @Override
-    public void establecerNombrePlato(String a) {
-        nombrePlato = a;
+    public MenuNiños(String a, double b, double c, double d) {
+        super(a, b);
+        valorHelado = c;
+        valorPastel = d;
     }
 
     public void establecerValorMenu(double a) {
         valorMenu = a;
-    }
-
-    @Override
-    public void establecerValorInicial(double a) {
-        valorInicial = a;
     }
 
     public void establecerValorHelado(double a) {
@@ -46,21 +34,6 @@ public class MenuNiños extends Menu {
     @Override
     public void establecerValorCancelar() {
         valorCancelar = valorMenu + valorInicial + valorHelado + valorPastel;
-    }
-
-    @Override
-    public String obtenerNombrePlato() {
-        return nombrePlato;
-    }
-
-    @Override
-    public double obtenerValorMenu() {
-        return valorMenu;
-    }
-
-    @Override
-    public double obtenerValorInicial() {
-        return valorInicial;
     }
 
     public double obtenerValorHelado() {

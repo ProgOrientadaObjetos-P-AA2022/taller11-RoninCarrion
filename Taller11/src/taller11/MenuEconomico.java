@@ -12,23 +12,13 @@ public class MenuEconomico extends Menu {
 
     private double porcentajeDescuento;
 
-    public MenuEconomico(String a, double b, double c, double d) {
-        super(a, b, c);
+    public MenuEconomico(String a, double b, double d) {
+        super(a, b);
         porcentajeDescuento = d;
-    }
-
-    @Override
-    public void establecerNombrePlato(String a) {
-        nombrePlato = a;
     }
 
     public void establecerValorMenu(double a) {
         valorMenu = a;
-    }
-
-    @Override
-    public void establecerValorInicial(double a) {
-        valorInicial = a;
     }
 
     public void establecerPorcentajeDescuento(double a) {
@@ -39,25 +29,6 @@ public class MenuEconomico extends Menu {
     public void establecerValorCancelar() {
         valorCancelar = valorMenu + valorInicial + porcentajeDescuento;
 
-    }
-
-    @Override
-    public String obtenerNombrePlato() {
-        return nombrePlato;
-    }
-
-    @Override
-    public double obtenerValorMenu() {
-        return valorMenu;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public double obtenerValorInicial() {
-        return valorInicial;
     }
 
     public double obtenerPorcentajeDescuento() {

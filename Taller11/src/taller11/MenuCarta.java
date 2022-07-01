@@ -14,9 +14,9 @@ public class MenuCarta extends Menu {
     private double valorBebida;
     private double porcentajeServicio;
 
-    public MenuCarta(String a, double b, double c, double d, double e, double f
+    public MenuCarta(String a, double b, double d, double e, double f
     ) {
-        super(a, b, c);
+        super(a, b);
         valorPorcion = d;
         valorBebida = e;
         porcentajeServicio = f;
@@ -38,21 +38,6 @@ public class MenuCarta extends Menu {
     public void establecerValorCancelar() {
         valorCancelar = valorMenu + valorInicial + valorPorcion
                 + valorBebida + porcentajeServicio;
-    }
-
-    @Override
-    public String obtenerNombrePlato() {
-        return nombrePlato;
-    }
-
-    @Override
-    public double obtenerValorMenu() {
-        return valorMenu;
-    }
-
-    @Override
-    public double obtenerValorInicial() {
-        return valorInicial;
     }
 
     public double obtenerValorPorcion() {

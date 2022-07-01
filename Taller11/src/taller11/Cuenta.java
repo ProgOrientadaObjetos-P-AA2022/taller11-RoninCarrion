@@ -78,7 +78,7 @@ public class Cuenta {
         }
         cadena = String.format("%s\n==========================================\n"
                 + "> Valor Subtotal: %.2f\n"
-                + "> Iva: %.2f \n"
+                + "> Iva: %.2f %% \n"
                 + "> Valor Total a Cancelar: %.2f", cadena,
                 subtotal,
                 iva,

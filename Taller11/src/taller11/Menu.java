@@ -12,19 +12,15 @@ import java.util.ArrayList;
  */
 public abstract class Menu {
 
-    protected String nombreCliente;
     // protected double cuentaPagar;
+    protected double valorCancelar;
     protected String nombrePlato;
     protected double valorMenu;
     protected double valorInicial;
-    protected double valorCancelar;
-    protected double iva;
-    protected double subtotal;
 
-    public Menu(String a, double b, double c) {
+    public Menu(String a, double b) {
         nombrePlato = a;
-        valorMenu = b;
-        valorInicial = c;
+        valorInicial = b;
     }
 
     public void establecerNombrePlato(String a) {
@@ -35,46 +31,14 @@ public abstract class Menu {
         valorInicial = a;
     }
 
-    public void establecerSubtotal(double a) {
-        subtotal = a;
-    }
-
-    public void establecerNombreCliente(String a) {
-        nombreCliente = a;
-    }
-
     public abstract void establecerValorCancelar();
-
-    public void establecerIva(double a) {
-        iva = a;
-    }
-
-    public void establecerSubtotal() {
-        subtotal = iva;
-    }
-
-    public String obtenerNombreCliente() {
-        return nombreCliente;
-    }
 
     public double obtenerValorCancelar() {
         return valorCancelar;
     }
 
-    public double obtenerIva() {
-        return iva;
-    }
-
-    public double obtenerSubtotal() {
-        return subtotal;
-    }
-
     public String obtenerNombrePlato() {
         return nombrePlato;
-    }
-
-    public double obtenerValorMenu() {
-        return valorMenu;
     }
 
     public double obtenerValorInicial() {

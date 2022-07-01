@@ -60,7 +60,7 @@ public class Taller11 {
                     porcentajeAdicional = a.nextDouble();
 
                     MenuCarta menuCarta = new MenuCarta(nombrePlato, valorMenu,
-                            valorInicial, valorGuarnicion, valorBebida,
+                            valorGuarnicion, valorBebida,
                             porcentajeAdicional);
 
                     menu.add(menuCarta);
@@ -80,7 +80,7 @@ public class Taller11 {
                     valorBebida = a.nextDouble();
 
                     MenuDia menuDia = new MenuDia(nombrePlato, valorMenu,
-                            valorInicial, valorPostre, valorBebida);
+                            valorPostre, valorBebida);
 
                     menu.add(menuDia);
                     break;
@@ -98,8 +98,7 @@ public class Taller11 {
                     porcentajeAdicional = a.nextDouble();
 
                     MenuEconomico menuEconomico = new MenuEconomico(nombrePlato,
-                            valorMenu,
-                            valorInicial, porcentajeAdicional);
+                            valorMenu, porcentajeAdicional);
 
                     menu.add(menuEconomico);
                     break;
@@ -108,8 +107,6 @@ public class Taller11 {
                     System.out.println("<< MENU DE NIÑOS >>");
                     System.out.println("Ingrese el nombre del plato: ");
                     nombrePlato = a.nextLine();
-                    System.out.println("Ingrese el valor del menú: ");
-                    valorMenu = a.nextDouble();
                     System.out.println("Ingrese el valor inicial del Menú:");
                     valorInicial = a.nextDouble();
                     System.out.println("Ingrese el valor de la porción de helado:");
@@ -117,7 +114,7 @@ public class Taller11 {
                     System.out.println("Ingrese el valor de la porción de pastel:");
                     double porcionPastel = a.nextDouble();
 
-                    MenuNiños menuNiños = new MenuNiños(nombrePlato, valorMenu,
+                    MenuNiños menuNiños = new MenuNiños(nombrePlato,
                             valorInicial, porcionHelado, porcionPastel);
 
                     menu.add(menuNiños);
