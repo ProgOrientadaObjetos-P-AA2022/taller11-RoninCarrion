@@ -17,17 +17,13 @@ public class MenuEconomico extends Menu {
         porcentajeDescuento = d;
     }
 
-    public void establecerValorMenu(double a) {
-        valorMenu = a;
-    }
-
     public void establecerPorcentajeDescuento(double a) {
-        porcentajeDescuento = (porcentajeDescuento / 100)* valorInicial;
+        porcentajeDescuento = a;
     }
-
+    
     @Override
     public void establecerValorMenu() {
-        valorMenu = valorMenu + valorInicial - porcentajeDescuento;
+        valorMenu = valorInicial - ((porcentajeDescuento / 100) * valorInicial);
 
     }
 

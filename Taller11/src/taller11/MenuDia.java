@@ -33,7 +33,7 @@ public class MenuDia extends Menu {
 
     @Override
     public void establecerValorMenu() {
-        valorMenu = valorMenu + valorInicial
+        valorMenu =  valorInicial
                 + valorPostre + valorBebida;
     }
 

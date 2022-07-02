@@ -33,7 +33,7 @@ public class Cuenta {
     }
 
     public void establecerTotalPagar() {
-        totalPagar = (subtotal * iva) + subtotal;
+        totalPagar = (subtotal * (iva/100)) + subtotal;
     }
 
     public void establecerIva(double a) {

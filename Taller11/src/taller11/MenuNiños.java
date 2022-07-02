@@ -29,7 +29,7 @@ public class MenuNiños extends Menu {
 
     @Override
     public void establecerValorMenu() {
-        valorMenu = valorMenu + valorInicial + valorHelado + valorPastel;
+        valorMenu = valorInicial + valorHelado + valorPastel;
     }
 
     public double obtenerValorHelado() {
