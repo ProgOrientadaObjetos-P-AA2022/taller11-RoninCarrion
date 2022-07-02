@@ -18,10 +18,10 @@ public class Cuenta {
     private double subtotal;
     private String nombreCliente;
 
-    public Cuenta(ArrayList<Menu> a, String b) {
+    public Cuenta(String b, ArrayList<Menu> a, double c) {
         menu = a;
         nombreCliente = b;
-        iva = 0.12;
+        iva = c;
     }
 
     public void establecerNombreCliente(String a) {
@@ -42,7 +42,7 @@ public class Cuenta {
 
     public void establecerSubtotal() {
         for (int i = 0; i < menu.size(); i++) {
-            subtotal += menu.get(i).valorCancelar;
+            subtotal += menu.get(i).valorMenu;
         }
     }
 
@@ -70,16 +70,17 @@ public class Cuenta {
     public String toString() {
         String cadena = String.format("\t<< RESTAURANT TODO SATISFECHO >>\n"
                 + ">> CUENTA POR PAGAR\n"
-                + "    > Nombre del Cliente: %s\n", nombreCliente);
+                + "    >Nombre del Cliente: %s\n", nombreCliente);
 
         for (int i = 0; i < menu.size(); i++) {
             cadena = String.format("%s\n%s", cadena, menu.get(i));
 
         }
-        cadena = String.format("%s\n==========================================\n"
-                + "> Valor Subtotal: %.2f\n"
-                + "> Iva: %.2f %% \n"
-                + "> Valor Total a Cancelar: %.2f", cadena,
+        cadena = String.format("%s\n"
+                + ">Valor Subtotal: %.2f\n"
+                + ">Iva: %.2f %% \n"
+                + ">Valor Total a Cancelar: %.2f\n"
+                + "==========================================\n", cadena,
                 subtotal,
                 iva,
                 totalPagar);

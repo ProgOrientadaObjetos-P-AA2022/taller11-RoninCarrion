@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author reroes
  */
-public class Taller11 {
+public class Ejecutor {
 
     /**
      * @param args the command line arguments
@@ -32,6 +32,8 @@ public class Taller11 {
         System.out.println(" << BIENVENIDOS/AS A RESTAURANT TODO SATISFECHO >>");
         System.out.println("Ingrese el nombre del cliente: ");
         String nombre = a.nextLine();
+        System.out.println("Ingrese el Iva: ");
+        double iva = a.nextDouble();
         while (stop) {
             System.out.println("Tenemos los siguientes menús, ingrese el"
                     + " número correspondiente\n"
@@ -47,8 +49,6 @@ public class Taller11 {
                     System.out.println("<< MENU CARTA >>");
                     System.out.println("Ingrese el nombre del plato: ");
                     nombrePlato = a.nextLine();
-                    System.out.println("Ingrese el valor del menú: ");
-                    valorMenu = a.nextDouble();
                     System.out.println("Ingrese el valor inicial del Menú:");
                     valorInicial = a.nextDouble();
                     System.out.println("Ingrese el valor de porción de Guarnición:");
@@ -59,7 +59,7 @@ public class Taller11 {
                             + "en relación del valor inicial del menú:");
                     porcentajeAdicional = a.nextDouble();
 
-                    MenuCarta menuCarta = new MenuCarta(nombrePlato, valorMenu,
+                    MenuCarta menuCarta = new MenuCarta(nombrePlato, valorInicial,
                             valorGuarnicion, valorBebida,
                             porcentajeAdicional);
 
@@ -70,8 +70,6 @@ public class Taller11 {
                     System.out.println("<< MENU DEL DÍA >>");
                     System.out.println("Ingrese el nombre del plato: ");
                     nombrePlato = a.nextLine();
-                    System.out.println("Ingrese el valor del menú: ");
-                    valorMenu = a.nextDouble();
                     System.out.println("Ingrese el valor inicial del Menú:");
                     valorInicial = a.nextDouble();
                     System.out.println("Ingrese del postre:");
@@ -79,7 +77,7 @@ public class Taller11 {
                     System.out.println("Ingrese el valor de la bebida:");
                     valorBebida = a.nextDouble();
 
-                    MenuDia menuDia = new MenuDia(nombrePlato, valorMenu,
+                    MenuDia menuDia = new MenuDia(nombrePlato, valorInicial,
                             valorPostre, valorBebida);
 
                     menu.add(menuDia);
@@ -89,8 +87,6 @@ public class Taller11 {
                     System.out.println("<< MENU ECONÓMICO >>");
                     System.out.println("Ingrese el nombre del plato: ");
                     nombrePlato = a.nextLine();
-                    System.out.println("Ingrese el valor del menú: ");
-                    valorMenu = a.nextDouble();
                     System.out.println("Ingrese el valor inicial del Menú:");
                     valorInicial = a.nextDouble();
                     System.out.println("Ingrese el porcentaje de descuento,"
@@ -98,7 +94,7 @@ public class Taller11 {
                     porcentajeAdicional = a.nextDouble();
 
                     MenuEconomico menuEconomico = new MenuEconomico(nombrePlato,
-                            valorMenu, porcentajeAdicional);
+                            valorInicial, porcentajeAdicional);
 
                     menu.add(menuEconomico);
                     break;
@@ -122,16 +118,15 @@ public class Taller11 {
                 case "5":
                     stop = false;
                     break;
-
                 default:
                     System.out.println("Ingrese un valor correcto por favor...");
+                    break;
             }
-
         }
         for (int i = 0; i < menu.size(); i++) {
-            menu.get(i).establecerValorCancelar();
+            menu.get(i).establecerValorMenu();
         }
-        Cuenta cuenta = new Cuenta(menu, nombre);
+        Cuenta cuenta = new Cuenta(nombre, menu, iva);
         cuenta.establecerSubtotal();
         cuenta.establecerTotalPagar();
         System.out.println(cuenta);

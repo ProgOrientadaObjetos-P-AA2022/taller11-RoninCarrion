@@ -33,40 +33,40 @@ public class Ejecutor02 {
         {"Carta 004", "9", "2.5", "2.9", "5"},};
 
         // Lista de Menus
-        ArrayList <Menu>lista = new ArrayList<>();
-
-        MenuNiños n1 = new MenuNiños("Niños 01", 2.00, 1.0, 1.5);
-        MenuNiños n2 = new MenuNiños("Niños 02", 3.00, 1.0, 1.5);
-        MenuNiños n3 = new MenuNiños("Niños 03", 2.00, 2.0, 0.5);
-        
-        MenuEconomico e1 = new MenuEconomico("Econo 001", 4.0, 25.0);
-        MenuEconomico e2 = new MenuEconomico("Econo 001", 4.0, 15.0);
-        MenuEconomico e3 = new MenuEconomico("Econo 001", 4.0, 35.0);
-        
-        MenuDia d1 = new MenuDia("Dia 001", 5, 1, 1);
-        MenuDia d2 = new MenuDia("Dia 002", 6, 2, 2);
-        MenuDia d3 = new MenuDia("Dia 003", 5.5, 3, 1);
-        
-        MenuCarta c1 = new MenuCarta("Carta 001", 6, 1.5, 2, 10);
-        MenuCarta c2 = new MenuCarta("Carta 002", 7, 1.7, 2.1, 5);
-        MenuCarta c3 = new MenuCarta("Carta 003", 8, 1.9, 2.2, 5);
-        MenuCarta c4 = new MenuCarta("Carta 004", 9, 2.5, 2.9, 5);
-       
+        ArrayList<Menu> lista = new ArrayList<>();
+        for (int i = 0; i < datos001.length; i++) {
+            String nombrePlato = datos001[i][0];
+            double vInicial = Double.parseDouble(datos001[i][1]);
+            double vHelado = Double.parseDouble(datos001[i][2]);
+            double vPastel = Double.parseDouble(datos001[i][3]);
+            MenuNiños n1 = new MenuNiños(nombrePlato, vInicial, vHelado, vPastel);
             lista.add(n1);
-            lista.add(n2);
-            lista.add(n3);
-            lista.add(e1);
-            lista.add(e2);
-            lista.add(e3);
-            lista.add(d1);
-            lista.add(d2);
-            lista.add(d3);
-            lista.add(c1);
-            lista.add(c2);
-            lista.add(c3);
-            lista.add(c4);
-            for (int i = 0; i < lista.size(); i++) {
-                lista.get(i).establecerValorCancelar();            
+        }
+
+        for (int i = 0; i < datos002.length; i++) {
+            String nombrePlato = datos002[i][0];
+            double vInicial = Double.parseDouble(datos002[i][1]);
+            double vPorcentaje = Double.parseDouble(datos002[i][2]);
+            MenuEconomico n1 = new MenuEconomico(nombrePlato, vInicial, vPorcentaje);
+            lista.add(n1);
+        }
+        for (int i = 0; i < datos003.length; i++) {
+            String nombrePlato = datos003[i][0];
+            double vInicial = Double.parseDouble(datos003[i][1]);
+            double vPostre = Double.parseDouble(datos003[i][2]);
+            double vBebida = Double.parseDouble(datos003[i][3]);
+            MenuDia n1 = new MenuDia(nombrePlato, vInicial, vPostre, vBebida);
+            lista.add(n1);
+        }
+        for (int i = 0; i < datos004.length; i++) {
+            String nombrePlato = datos004[i][0];
+            double vInicial = Double.parseDouble(datos004[i][1]);
+            double vGuarnicion = Double.parseDouble(datos004[i][2]);
+            double vBebida = Double.parseDouble(datos004[i][3]);
+            double pAdicional = Double.parseDouble(datos004[i][4]);
+            MenuCarta n1 = new MenuCarta(nombrePlato, vInicial, vGuarnicion, vBebida,
+                            pAdicional);
+            lista.add(n1);
         }
 
         /* Agregar un proceso para generar objetos de tipo Menu Carta, Día, 
@@ -75,15 +75,15 @@ public class Ejecutor02 {
         agregar al ArrayList lista*/
         // Inicio de solución
         // Fin de solución
-//        for (int i = 0; i < lista.size(); i++) {
-//            lista.get(i);
-//        }
+        for (int i = 0; i < lista.size(); i++) {
+            lista.get(i).establecerValorMenu();
+        }
+
         // Un objeto de tipo Cuenta
         Cuenta miCuenta = new Cuenta("Luis Andrade", lista, 10);
         miCuenta.establecerSubtotal();
-        miCuenta.establecerValorCancelar();
+        miCuenta.establecerTotalPagar();
         System.out.printf("%s\n", miCuenta);
 
     }
-
 }

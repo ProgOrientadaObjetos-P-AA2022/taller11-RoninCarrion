@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public abstract class Menu {
 
     // protected double cuentaPagar;
-    protected double valorCancelar;
     protected String nombrePlato;
     protected double valorMenu;
     protected double valorInicial;
@@ -31,10 +30,10 @@ public abstract class Menu {
         valorInicial = a;
     }
 
-    public abstract void establecerValorCancelar();
+    public abstract void establecerValorMenu();
 
-    public double obtenerValorCancelar() {
-        return valorCancelar;
+    public double obtenerValorMenu() {
+        return valorMenu;
     }
 
     public String obtenerNombrePlato() {
@@ -47,10 +46,8 @@ public abstract class Menu {
 
     @Override
     public String toString() {
-        String cadena = String.format("Nombre del Plato: %s\n"
-                + "Valor del Menu: %.2f\n"
-                + "Valor inicial del Menu: %.2f\n", nombrePlato,
-                valorMenu,
+        String cadena = String.format("    >Nombre del Plato: %s\n"
+                + "    >Valor inicial del Menu: %.2f", nombrePlato,
                 valorInicial);
         return cadena;
     }
